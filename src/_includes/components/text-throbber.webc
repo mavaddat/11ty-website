@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="throbber.css">
+<script src="throbber.js"></script>
+<script webc:type="js">
+let bars = [];
+for(let j = 0; j < duration; j+= 1000) {
+	bars.push("=");
+}
+bars.push(" 🏁");
+bars.join("");
+</script>

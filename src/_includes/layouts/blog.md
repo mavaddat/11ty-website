@@ -5,20 +5,26 @@ eleventyComputed:
   social:
     description: "An Eleventy blog post published on {{ page.date | newsDate('LLLL yyyy') }}."
 ---
+
 # {{ newstitle }}
 
-<div class="lo lo-inline lo-separator-h" style="--lo-margin-h: 1.5em; --lo-margin-v: .5em">
-  <div class="lo-c lo-nocontentwrap">
+<div class="fl fl-inline fl-separator-h fl-nowrap spc-b2" style="--fl-gap-h: 1.5em; --fl-gap-v: .5em">
+  <div>
     <em>{{ page.date | newsDate }}</em>
   </div>
-  <div class="lo-c lo-nocontentwrap">
+{%- if postAuthor and postAuthors[postAuthor] %}
+	<div>
+    <a href="{{ postAuthors[postAuthor] }}" class="elv-externalexempt">{% indieavatar postAuthors[postAuthor] %}{{ postAuthor }}</a>
+  </div>
+{%- endif %}
+  <div>
     {% emoji "📢" %} <a href="/blog/feed.xml">Subscribe to the Eleventy News Feed</a>
   </div>
 </div>
 
 {{ content | safe }}
 
-
+{% if not hideRelatedBlogPosts %}
 ---
 
 ### Read more blog posts:
@@ -26,5 +32,7 @@ eleventyComputed:
 {% set previousPost = collections.blog | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.blog | getNextCollectionItem(page) %}
 
-{% if nextPost %}* <a href="{{ nextPost.url }}">Next: {{ nextPost.data.newstitle }}</a>{% endif %}
-{% if previousPost %}* <a href="{{ previousPost.url }}">Previous: {{ previousPost.data.newstitle }}</a>{% endif %}
+{% if nextPost %}- Next: <a href="{{ nextPost.url }}">{{ nextPost.data.newstitle }}</a>{% endif %}
+{% if previousPost %}- Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.newstitle }}</a>{% endif %}
+
+{%- endif %}

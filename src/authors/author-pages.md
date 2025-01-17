@@ -1,42 +1,37 @@
+---js
+let pagination = {
+	data: "authors",
+	size: 1,
+	alias: "author",
+	resolve: "values",
+	generatePageOnEmptyData: true,
+	before: function(paginationData) {
+		return paginationData.filter(page => !page.name.startsWith("twitter:"));
+	}
+};
+let permalink = "/authors/{{ author.name | slugify }}/";
+let excludeFromSearch = true;
+let layout = "layouts/docs.njk";
 ---
-pagination:
-  data: authors
-  size: 1
-  alias: author
-  serverless: eleventy.serverless.path.name
-  generatePageOnEmptyData: true
-permalink:
-  serverless: "/authors/:name/"
-eleventyNavigation:
-  parent: Authors
-excludeFromSearch: true
-excludeFromSidebar: true
-layout: layouts/docs.njk
-css:
-  - components/page-sites.css
----
-{# @TODO add support for githubTwitterMap.js data #}
-{%- set twitterUrl = "https://twitter.com/" + author.name.substring("twitter:".length) | canonicalTwitterUrl %}
-{%- set githubUrl = "https://github.com/" + author.name %}
 
-{%- set supporter = opencollective.supporters | isSupporter(author.name, githubTwitterMap[author.name], author.opencollective) -%}
+<style>{% include "components/page-sites.css" %}</style>
+
+{%- set githubUrl = "https://github.com/" + author.name %}
+{%- set supporter = opencollective.supporters | isSupporter(author.name, author.opencollective) -%}
 {%- set displayName = supporter.name or author.name %}
 
 # {{ displayName }}
 
-{%- if author.name.startsWith("twitter:") %}
-* <a href="{{ twitterUrl }}">{% communityavatar author.name %}{{ author.name | friendlyAuthorName | safe }}</a> on Twitter
-{%- else %}
-* <a href="{{ githubUrl }}">{% communityavatar author.name %}{{ author.name }}</a> on GitHub
-{%- endif %}
+- <a href="{{ githubUrl }}">{% communityavatar author.name %}{{ author.name }}</a> on GitHub
 {%- if supporter %}
-* <a href="{{ supporter.profile }}" class="elv-externalexempt supporters-link"><strong>{% if supporter.tier and supporter.isActive %} {% emoji "📅" %} Monthly{% endif %} Eleventy Contributor</strong> on Open Collective</a> 🎈
+- <a href="{{ supporter.profile }}" class="elv-externalexempt supporters-link"><strong>{% if supporter.tier and supporter.isActive %} {% emoji "📅" %} Monthly{% endif %} Eleventy Contributor</strong> on Open Collective</a> 🎈
 {%- else %}
-* <a href="https://opencollective.com/11ty">Not yet <strong>Supporting Eleventy</strong> on Open Collective.</a>
-* <em>Already a supporter but it’s not showing here? Make sure your Twitter account is listed on your Open Collective Profile.</em>
+- <a href="https://opencollective.com/11ty">Not yet <strong>Supporting Eleventy</strong> on Open Collective.</a>
+- <em>Already a supporter but it’s not showing here? Make sure your GitHub account is listed the <em>social links</em> section of your Open Collective Profile.</em>
 {%- endif %}
 
 {%- if author.business_url and supporter | isBusinessPerson %}
+
 ### Member of the [Eleventy Super Professional Business Network {% emoji "💼" %}](/super-professional-business-network/)
 
 <a href="{{ author.business_url }}" class="btn-primary benchnine rainbow-active rainbow-active-noanim elv-externalexempt">Let’s Do Business</a>
@@ -44,28 +39,47 @@ css:
 
 {%- set authorStarters = starters | sortObjectByOrder | findBy("author", author.name) %}
 {%- if authorStarters.length %}
+
 ### {{ displayName }}’s Starter Projects:
 
 {%- for site in authorStarters %}
 {%- if not site.disabled %}
-* [{% avatarlocalcache "twitter", site.author, site.author %}{{ site.name }}]({{ site.url }}){% if site.description %} {{ site.description}}{% endif %}
+- [{{ site.name }}]({{ site.url }}){% if site.description %} {{ site.description}}{% endif %}
 {%- endif %}
 {%- endfor %}
 {%- endif %}
 
 {%- set authorPlugins = plugins | sortObjectByOrder | findBy("author", author.name) %}
 {%- if authorPlugins.length %}
+
 ### {{ displayName }}’s Plugins:
 
 {%- for plugin in authorPlugins %}
-* [{% avatarlocalcache "twitter", plugin.author, plugin.author %}{% if plugin.deprecated %}~~{% endif %}{{ plugin.npm }}{% if plugin.deprecated %}~~{% endif %}](https://www.npmjs.com/package/{{ plugin.npm }}){% if plugin.description %} {% if plugin.deprecated %}~~{% endif %}{{ plugin.description | safe }}{% if plugin.deprecated %}~~{% endif %}{% endif %} {{ plugin.deprecated }}
+- [{% if plugin.deprecated %}~~{% endif %}{{ plugin.npm }}{% if plugin.deprecated %}~~{% endif %}](https://www.npmjs.com/package/{{ plugin.npm }}){% if plugin.description %} {% if plugin.deprecated %}~~{% endif %}{{ plugin.description | safe }}{% if plugin.deprecated %}~~{% endif %}{% endif %} {{ plugin.deprecated }}
 {%- endfor %}
 {%- endif %}
 
-
 ### {{ displayName }}’s Sites:
 
-<div class="lo sites-lo" style="--lo-margin-h: 2rem; --lo-margin-v: 1rem; --lo-stackpoint: 31.25em;">
+{% css %}
+.site-score speedlify-score {
+flex-wrap: nowrap;
+}
+.site-score speedlify-score {
+margin-top: .5em;
+}
+.site-score .speedlify-rank {
+font-weight: 700;
+}
+.site-score .speedlify-rank:before {
+font-weight: 400;
+}
+.site-score .speedlify-rank-change.down {
+display: none;
+}
+{% endcss %}
+
+<div class="fl sites-lo" style="--fl-gap-h: 2rem; --fl-gap-v: 1rem; --fl-stackpoint: 31.25em;">
 {%- for site in author.sites %}
   {%- set showMetadata = true %}
   {% include "site.njk" %}

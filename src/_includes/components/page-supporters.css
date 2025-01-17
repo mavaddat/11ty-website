@@ -1,18 +1,17 @@
 /* Supporters Page */
 .supporters-facepile {
-	--lo-margin-h: 1rem;
-	--lo-margin-v: 1rem;
+	--fl-gap-v: 1rem;
 }
 .supporters-facepile.supporters-facepile {
 	padding: 0;
 }
-.supporters-facepile > .lo-c {
+.supporters-facepile > * {
 	flex-basis: 15rem;
 	padding-bottom: 1rem;
 	border-bottom: 1px solid #ddd;
 }
 @media (prefers-color-scheme: dark) {
-	.supporters-facepile > .lo-c {
+	.supporters-facepile > * {
 		border-bottom: 1px solid #444;
 	}
 }
@@ -21,18 +20,17 @@
 	white-space: nowrap;
 	font-weight: 600;
 }
-.supporters-facepile .lo {
+.supporters-facepile .fl {
 	/*position: relative;
 	top: -.5em;*/
 	width: 100%;
-	--lo-margin-h: 1rem;
-	--lo-margin-v: .5rem;
-	--lo-stackpoint: 300px;
+	--fl-stackpoint: 300px;
 	align-items: flex-start;
 	padding-left: calc(38px + 5vw);
 }
-@media (min-width: 37.5em) { /* 600px */
-	.supporters-facepile .lo {
+@media (min-width: 37.5em) {
+	/* 600px */
+	.supporters-facepile .fl {
 		padding-left: 68px;
 	}
 }
@@ -43,7 +41,7 @@
 	line-height: 1.3;
 	text-transform: uppercase;
 	font-weight: 500;
-	letter-spacing: .5px;
+	letter-spacing: 0.5px;
 }
 .supporters-hearts {
 	flex-grow: 5;
@@ -53,7 +51,7 @@
 }
 .supporters-hearts-empty {
 	filter: grayscale(1) brightness(100%);
-	opacity: .4;
+	opacity: 0.4;
 	font-size: 0.875em; /* 14px /16 */
 }
 @media (prefers-color-scheme: dark) {
@@ -68,10 +66,10 @@
 	font-weight: 900;
 	background-color: #e2f4ff;
 	border-bottom-color: transparent;
-	border-radius: .5em;
-	padding-top: .25em;
-	padding-left: .25em;
-	padding-right: .25em;
+	border-radius: 0.5em;
+	padding-top: 0.25em;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
 }
 .supporters-facepile .supporters-active .supporters-tier {
 	padding-right: 1em;
@@ -79,10 +77,4 @@
 .supporters-facepile .supporters-active .supporters-tier:after {
 	font-weight: 600;
 	content: "—THANK YOU! 🎉";
-}
-.is-eleventy-supporter .supporters-facepile img {
-	filter: grayscale(1);
-}
-.is-eleventy-supporter .supporters-facepile .supporters-active img {
-	filter: grayscale(0);
 }
