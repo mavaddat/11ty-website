@@ -237,6 +237,10 @@
 	}
 	.img-gallery .sites-screenshot {
 		border: none;
+		box-shadow: none;
+		max-height: 18em;
+		width: auto;
+		margin-inline: auto;
 	}
 	.sites-site-vert a:hover .img-gallery {
 		box-shadow: 0 0 0 4px var(--shadow-color);
