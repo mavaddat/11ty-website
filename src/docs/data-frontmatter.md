@@ -113,7 +113,7 @@ console.log({ noop });
 
 #### JavaScript Object Front Matter
 
-In previous versions of Eleventy, `js` front matter was required to use a JavaScript object notation. This method is still supported moving forward.
+`js` front matter also supports JavaScript object notation (though it isn’t as pretty).
 
 {% codetitle "Nunjucks", "Syntax" %}
 {%- set codeBlock %}{% raw %}
@@ -138,7 +138,6 @@ _Warning: while Nunjucks and Liquid syntax are similar, the above example will *
 
 You can [customize Front Matter Parsing](/docs/data-frontmatter-customize/) in Eleventy to add your own custom format, and we provide examples for:
 
-- [JavaScript in front matter](/docs/data-frontmatter-customize/#example-use-javascript-in-your-front-matter).
 - [TOML in front matter](/docs/data-frontmatter-customize/#example-using-toml-for-front-matter-parsing).
 - You can also configure [front matter for customized excerpts](/docs/data-frontmatter-customize/).
 
