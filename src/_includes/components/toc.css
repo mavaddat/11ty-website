@@ -21,7 +21,7 @@
 @media (min-width: 55em) {
 	/* 880px */
 	.elv-header-docs + .elv-layout .elv-toc {
-		--elv-toc-sticky-top: 3.125rem;
+		--elv-toc-sticky-top: 4rem;
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -51,8 +51,14 @@
 }
 /* #2col × 700px */
 @media (min-width: 41.4375em) and (min-height: 43.75em) {
-	/* Sticky on menus except Guide/Projects */
-	.elv-toc-c:has(a[href="/docs/projects/"] + details:not([open])) {
+	.elv-toc {
+		display: flex;
+		flex-direction: column;
+	}
+	.elv-toc-c {
+		flex-grow: 1;
+	}
+	.elv-toc-list:has(a[href="/docs/projects/"] + details:not([open])) {
 		position: sticky;
 		top: var(--elv-toc-sticky-top);
 	}
