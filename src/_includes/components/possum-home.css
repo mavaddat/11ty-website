@@ -4,7 +4,7 @@
 		overflow: hidden;
 	}
 	.elv-header-default .elv-possum {
-		--possum-top: 26%;
+		--possum-top: 20%;
 		pointer-events: none;
 		width: auto;
 		height: calc((50vh - 2rem) / 1.6);
