@@ -89,7 +89,7 @@ hr {
 	border-top: 1px solid var(--border-color);
 }
 p {
-	max-width: 42em;
+	max-width: 39em;
 	line-height: 1.6;
 }
 
@@ -460,6 +460,27 @@ filter-container:defined form {
 }
 .ta-r {
 	text-align: right;
+}
+.util-flex {
+	display: flex;
+	gap: 1em;
+}
+.util-flex:is(ul, ol) {
+	list-style: "";
+	margin: 0;
+	padding: 0;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.util-flex:is(ul, ol) li {
+	flex-grow: 1;
+	padding: 0;
+}
+.util-flex:is(ul, ol) li:last-child {
+	text-align: right;
+}
+.util-flex:is(ul, ol) a[href] {
+	display: block;
 }
 .util-stack {
 	display: grid;
