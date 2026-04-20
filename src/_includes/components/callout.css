@@ -221,6 +221,7 @@ body > .elv-callout-sticky .elv-callout-c {
 	.elv-toc .elv-callout:first-child:has(+ .elv-callout) {
 		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
 	}
 	.elv-toc .elv-callout-label,
 	.elv-toc .elv-callout-c {
