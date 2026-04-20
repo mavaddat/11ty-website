@@ -1,5 +1,6 @@
 :root {
 	--layout-max: 70rem;
+	--paragraph-max: 39em;
 	--brand-ba: rgb(0, 167, 118); /* 00a676 */
 	--brand-fa: rgb(84, 140, 216); /* 548cd8 */
 	--brand-wa: rgb(243, 105, 69); /* f36945 */
@@ -89,7 +90,7 @@ hr {
 	border-top: 1px solid var(--border-color);
 }
 p {
-	max-width: 39em;
+	max-width: var(--paragraph-max);
 	line-height: 1.6;
 }
 

@@ -65,6 +65,9 @@
 .announcement-btn {
 	line-height: 1.6;
 	margin-block: 2em;
+	max-width: 28em;
+	margin-inline: auto;
+	text-align: center;
 }
 
 .elv-header-default .announcement {
