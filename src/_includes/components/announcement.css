@@ -1,9 +1,6 @@
 .announcement {
 	width: 100%;
-	background-color: rgb(24, 49, 83);
-	color: #fff;
 	padding: 0.25em 1em;
-	line-height: 1;
 	gap: .5em;
 }
 @media (min-width: 48em) {
@@ -15,20 +12,20 @@
 }
 .announcement,
 .announcement-btn {
-	--btn-bg: #f0f1f3;
-	--btn-color: #183153;
+	--btn-bg: #183153;
+	--btn-color: #f0f1f3;
 	--btn-shadow-color: #0f1f36;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	font-weight: 600;
-	text-align: center;
 }
 @media (prefers-color-scheme: dark) {
 	.announcement,
 	.announcement-btn {
-		--btn-bg: #183153;
+		--btn-bg: #00a776;
 		--btn-color: #f0f1f3;
+		--btn-shadow-color: #165b46;
 	}
 }
 .announcement-btn,
@@ -42,12 +39,6 @@
 	border-radius: .5em;
 	margin: .25em .25em .5em .25em;
 	border: .125rem solid var(--btn-shadow-color);
-}
-.announcement > a,
-.announcement > span {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 .announcement-btn,
 .announcement > a,
@@ -79,4 +70,8 @@
 	--btn-color: #333;
 	--btn-shadow-color: #666;
 	background-color: #222;
+}
+
+.products .announcement svg {
+	min-width: 1em;
 }
