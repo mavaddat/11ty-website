@@ -1,4 +1,6 @@
 class TimeDifference extends HTMLElement {
+	#interval;
+
 	// Order of these keys in important
 	static UNITS = {
 		milliseconds: .001,
@@ -25,7 +27,7 @@ class TimeDifference extends HTMLElement {
 		return this.hasAttribute("live");
 	}
 
-	get interval() {
+	get intervalTimeout() {
 		// numeric override (seconds)
 		let attr = this.getAttribute("interval");
 		if(attr) {
@@ -97,7 +99,15 @@ class TimeDifference extends HTMLElement {
 		return rtf.format(Math.floor(diff), units);
 	}
 
+	isPaused() {
+		return this.paused || this.hasAttribute("paused");
+	}
+
 	update() {
+		if(this.isPaused()) {
+			return;
+		}
+
 		requestAnimationFrame(() => {
 			this.time.forEach(timeEl => {
 				let dateStr = timeEl.getAttribute("datetime");
@@ -122,7 +132,7 @@ class TimeDifference extends HTMLElement {
 			}
 		}
 
-		return Math.max(this.interval, min);
+		return Math.max(this.intervalTimeout, min);
 	}
 
 	async connectedCallback() {
@@ -135,7 +145,10 @@ class TimeDifference extends HTMLElement {
 		if(this.live) {
 			// Minimum 40 milliseconds
 			let interval = await this.getInterval();
-			setInterval(this.update.bind(this), interval);
+			if(this.#interval) {
+				clearInterval(this.#interval);
+			}
+			this.#interval = setInterval(this.update.bind(this), interval);
 		}
 	}
 }

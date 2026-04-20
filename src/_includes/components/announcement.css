@@ -77,3 +77,6 @@
 .products .announcement svg {
 	min-width: 1em;
 }
+.elv-footer-wrap .announcement {
+	background-color: color-mix(in oklab, var(--background-color), var(--btn-bg) 85%);
+}
