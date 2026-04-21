@@ -27,6 +27,11 @@ class TimeDifference extends HTMLElement {
 		return this.hasAttribute("live");
 	}
 
+	get mode() {
+		// countdown: stops at 0
+		return this.getAttribute("mode");
+	}
+
 	get intervalTimeout() {
 		// numeric override (seconds)
 		let attr = this.getAttribute("interval");
@@ -61,7 +66,7 @@ class TimeDifference extends HTMLElement {
 		return (TimeDifference.UNITS[units] || 1) * 1000;
 	}
 
-	static getText(dateStr, units, locale) {
+	static getText(dateStr, units, locale, mode) {
 		let date1;
 		if(!isNaN(Date.parse(dateStr))) {
 			date1 = Date.parse(dateStr);
@@ -78,10 +83,13 @@ class TimeDifference extends HTMLElement {
 		let divisor = TimeDifference.getDivisor(units);
 		let diff = (date1 - date2) / divisor;
 		let amountDiff = diff/Math.round(diff);
+		// stops at 0
+		if(mode === "countdown") {
+			diff = Math.max(Math.floor(diff), 0); // minimum 0
+		}
 		if(units === "milliseconds") {
 			// milliseconds are not supported by RelativeTimeFormat
 			let numFormat = new Intl.NumberFormat();
-			diff = Math.max(Math.floor(diff), 0); // minimum 0
 			return `${diff > 0 ? "in " : ""}${numFormat.format(diff)} milliseconds`;
 		}
 
@@ -117,7 +125,7 @@ class TimeDifference extends HTMLElement {
 				}
 
 				let locale = this.getAttribute("locale") || "en";
-				timeEl.innerText = TimeDifference.getText(dateStr, this.units, locale);
+				timeEl.innerText = TimeDifference.getText(dateStr, this.units, locale, this.mode);
 			})
 		});
 	}
