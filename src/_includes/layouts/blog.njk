@@ -4,6 +4,8 @@ layout: layouts/docs.njk
 eleventyComputed:
   social:
     description: "An Eleventy blog post published on {{ page.date | newsDate('LLLL yyyy') }}."
+classAdditions:
+  main: elv-layout-blog
 ---
 <h1>{{ newstitle }}</h1>
 
@@ -32,9 +34,9 @@ eleventyComputed:
 {%- set nextPost = collections.blog | getNextCollectionItem(page) %}
 
 {%- if nextPost or previousPost %}
-<ul class="util-flex">
-<li>Older<br>{% if previousPost %}<a href="{{ previousPost.url }}"><strong>{{ previousPost.data.newstitle }}</strong></a>{% else %}<em>None</em>{% endif %}</li>
-<li>Newer<br>{% if nextPost %}<a href="{{ nextPost.url }}"><strong>{{ nextPost.data.newstitle }}</strong></a>{% else %}<em>None (yet!)</em></em>{% endif %}</li>
+<ul class="elv-blog-navigation util-flex">
+<li><span><i class="fa-solid fa-arrow-left"></i>Older</span>{% if previousPost %}<a href="{{ previousPost.url }}"><strong>{{ previousPost.data.newstitle }}</strong></a>{% else %}<em>None</em>{% endif %}</li>
+<li><span>Newer<i class="fa-solid fa-arrow-right"></i></span>{% if nextPost %}<a href="{{ nextPost.url }}"><strong>{{ nextPost.data.newstitle }}</strong></a>{% else %}<em>None (yet!)</em></em>{% endif %}</li>
 </ul>
 {%- endif %}
 

@@ -1,6 +1,6 @@
 :root {
 	--layout-max: 70rem;
-	--paragraph-max: 39em;
+	--paragraph-max: 44rem;
 	--brand-ba: rgb(0, 167, 118); /* 00a676 */
 	--brand-fa: rgb(84, 140, 216); /* 548cd8 */
 	--brand-wa: rgb(243, 105, 69); /* f36945 */
@@ -477,12 +477,6 @@ filter-container:defined form {
 	flex-grow: 1;
 	padding: 0;
 }
-.util-flex:is(ul, ol) li:last-child {
-	text-align: right;
-}
-.util-flex:is(ul, ol) a[href] {
-	display: block;
-}
 .util-stack {
 	display: grid;
 }
@@ -527,4 +521,38 @@ filter-container:defined form {
 	width: 2.2em;
 	height: 2.2em;
 	color: #c70000;
+}
+
+/* Blog layout */
+.elv-layout-blog heading-anchors > *:not(h1, .breadcrumb, .fl-inline, .elv-blog-navigation, hr, .sites-vert, table) {
+	max-width: var(--paragraph-max);
+}
+/* Blog previous/next */
+.elv-blog-navigation:is(ul, ol) li {
+	display: flex;
+	gap: .25em;
+	flex-direction: column;
+}
+.elv-blog-navigation:is(ul, ol) a[href] {
+	display: block;
+	max-width: 20em;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child {
+	align-items: flex-end;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child a[href] {
+	text-align: right;
+}
+.elv-blog-navigation span:first-child {
+	font-size: .75em;
+	text-transform: uppercase;
+	letter-spacing: .15em;
+}
+.elv-blog-navigation svg {
+	font-size: .75em;
+	vertical-align: unset;
+	margin-inline: 0 .5em;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child svg {
+	margin-inline: .5em 0;
 }

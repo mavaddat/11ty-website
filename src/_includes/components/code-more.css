@@ -34,8 +34,7 @@
 }
 
 pre[class*="language-diff-"] {
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 1.5rem;
 }
 .token.deleted {
 	background-color: hsl(350deg 100% 88% / 20%);
@@ -43,15 +42,16 @@ pre[class*="language-diff-"] {
 .token.inserted {
 	background-color: hsl(120deg 73% 75% / 20%);
 }
-.token.inserted:not(.prefix),
-.token.deleted:not(.prefix) {
+code > .token.inserted:not(.prefix),
+code > .token.deleted:not(.prefix) {
 	display: block;
+	margin-left: -1.5rem;
 }
-.token.prefix.unchanged,
-.token.prefix.inserted,
-.token.prefix.deleted {
+.token.prefix.prefix {
+	display: inline-flex;
+	justify-content: center;
+	width: 1rem;
+	margin-right: 0.5rem;
 	-webkit-user-select: none;
 	user-select: none;
-	margin-right: 0.5em;
-	padding: 0 0.2em;
 }

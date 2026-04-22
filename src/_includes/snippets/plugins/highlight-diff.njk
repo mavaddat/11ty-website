@@ -5,9 +5,9 @@
 {% set codeBlock %}
 ```diff-js
 +function myFunction() {
-   // …
--  return true;
- }
+	// …
+-	return true;
+}
 ```
 {% endset %}
 {{ codeBlock | highlight("", undefined, { rawMarkdown: true }) | safe }}
@@ -16,9 +16,9 @@
 {% set codeBlock %}{% raw %}
 {% highlight diff-js %}
 +function myFunction() {
-   // …
--  return true;
- }
+	// …
+-	return true;
+}
 {% endhighlight %}
 {% endraw %}{% endset %}
 {{ codeBlock | highlight("liquid") | safe }}
@@ -27,8 +27,8 @@
 {% set codeBlock %}{% raw %}
 {% highlight "diff-js" %}
 +function myFunction() {
-   // …
--  return true;
+	// …
+-	return true;
 }
 {% endhighlight %}
 {% endraw %}{% endset %}
@@ -39,9 +39,9 @@
 export default function (data) {
   let code = `
 +function myFunction() {
-   // …
--  return true;
- }`;
+	// …
+-	return true;
+}`;
 
   return this.highlight("diff-js", code);
 };
@@ -56,9 +56,9 @@ The `highlight` JavaScript function was {% addedin "Syntax Highlighter v4.0.0" %
 module.exports = function (data) {
   let code = `
 +function myFunction() {
-   // …
--  return true;
- }`;
+	// …
+-	return true;
+}`;
 
   return this.highlight("diff-js", code);
 };

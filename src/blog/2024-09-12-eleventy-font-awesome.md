@@ -9,7 +9,7 @@ ogimageOverride:
   alt: The Font Awesome logo + the 11ty logo
   type: image/png
 ---
-<img src="./fa-2.png" alt="Font Awesome + 11ty logos">
+<div class="opengraph-card"><a href="https://blog.fontawesome.com/eleventy-joins-font-awesome/" class="elv-externalexempt"><img src="./fa-2.png" alt="Font Awesome + 11ty logos"></a></div>
 
 Today—I’m delighted to announce that 11ty is joining the excellent team at [<i class="fa-brands fa-font-awesome"></i>_Font Awesome_](https://fontawesome.com/).
 

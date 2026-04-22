@@ -16,9 +16,11 @@
 	--btn-color: #f0f1f3;
 	--btn-shadow-color: #0f1f36;
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
 	font-weight: 600;
+}
+.announcement {
+	flex-wrap: wrap;
 }
 @media (prefers-color-scheme: dark) {
 	.announcement,
@@ -80,6 +82,15 @@
 .products .announcement svg {
 	min-width: 1em;
 }
+/* External link opt-out */
+.announcement-btn:after {
+	display: none;
+}
+.announcement-btn svg {
+	min-width: 1.5em;
+	height: auto;
+}
 .elv-footer-wrap .announcement {
 	background-color: color-mix(in oklab, var(--background-color), var(--btn-bg) 85%);
 }
+
