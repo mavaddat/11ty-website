@@ -4,6 +4,7 @@ eleventyNavigation:
   parent: Blog
 blogHighlight: true
 tags: sidebarHighlight
+screenshotCacheBust: 1
 ---
 **TL;DR** After a [whoopsie-daisy false-start on our initial Kickstarter campaign](https://blog.fontawesome.com/pausing-kickstarter/), we’re ramping up again to launch [Kickstarter Final_FINAL_v2 on **April 28, 2026**](https://www.kickstarter.com/projects/fontawesome/build-awesome-pro?ref=43ttgb).
 
