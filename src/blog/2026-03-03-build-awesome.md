@@ -3,7 +3,6 @@ newstitle: "Eleventy is now Build Awesome"
 eleventyNavigation:
   parent: Blog
 blogHighlight: true
-tags: sidebarHighlight
 screenshotCacheBust: 1
 ---
 <div class="opengraph-card"><img src="./build-awesome-og.png" alt="Build Awesome in white text with the Build Awesome balloon, set amongst a variety of Font Awesome icons in the background"></div>
