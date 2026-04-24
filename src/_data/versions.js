@@ -3,6 +3,10 @@ import fetchGitHubReleases from "./githubReleases.js";
 
 const HARDCODED_VERSIONS = [
 	{
+		tag: "v3.1.5",
+		docs_url: "https://www.11ty.dev/docs/",
+		minimumNodeVersion: 18,
+	},{
 		tag: "v3.1.2",
 		docs_url: "https://www.11ty.dev/docs/",
 		minimumNodeVersion: 18,

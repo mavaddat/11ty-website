@@ -40,6 +40,10 @@ npm install @11ty/eleventy-plugin-rss
 
 {% addedin "v3.0.0-alpha.13" %}{% addedin "RSS 2.0.0" %} This method creates a feed template directly from your plugin configuration, without requiring additional files in your project. The default template uses Nunjucks, so make sure `njk` is included `templateFormats` in your [Eleventy config](/docs/config/#template-formats). Read more about [Virtual Templates](/docs/virtual-templates.md).
 
+{% callout "info", "md" %}
+{% addedin "RSS 3.0.0" %}[Version 3 of this plugin](https://github.com/11ty/eleventy-plugin-rss/releases/tag/v3.0.0) is now using ESM. This requires Eleventy v3 or newer. Additionally, if you’re using a CommonJS configuration file and an [older version of Node (&lt; 20.19), you’ll need to use dynamic `import()` instead of `require`](/docs/cjs-esm/#using-esm-plugins-in-common-js-configuration).
+{% endcallout %}
+
 {% set codeContent %}
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
@@ -96,6 +100,10 @@ export default function (eleventyConfig) {
 };
 {% endset %}
 {% include "snippets/configDefinition.njk" %}
+
+{% callout "info", "md" %}
+{% addedin "RSS 3.0.0" %}[Version 3 of this plugin](https://github.com/11ty/eleventy-plugin-rss/releases/tag/v3.0.0) is now using ESM. This requires Eleventy v3 or newer. Additionally, if you’re using a CommonJS configuration file and an [older version of Node (&lt; 20.19), you’ll need to use dynamic `import()` instead of `require`](/docs/cjs-esm/#using-esm-plugins-in-common-js-configuration).
+{% endcallout %}
 
 <details>
 <summary>Expand to see full options list</summary>

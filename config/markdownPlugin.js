@@ -67,11 +67,17 @@ export default function (eleventyConfig) {
 			if (customLabel) {
 				label = customLabel;
 				classLevel = "elv-callout-info";
-			} else if (level === "error") {
-				label = level.toUpperCase();
+			}
+
+			if (level === "error") {
+				if(!customLabel) {
+					label = level.toUpperCase();
+				}
 				classLevel = "elv-callout-error";
 			} else if (level === "warn") {
-				label = "WARNING";
+				if(!customLabel) {
+					label = "WARNING";
+				}
 				classLevel = "elv-callout-warn";
 			} else if(level === "info") {
 				// label is skipped

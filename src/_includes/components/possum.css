@@ -10,7 +10,7 @@
 }
 /* #2col */
 @media (max-width: 41.375em) {
-	/* Hide possum on docs only */
+	/* Hide moving possum on docs only */
 	.elv-possum-island {
 		display: none;
 	}

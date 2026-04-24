@@ -3,6 +3,7 @@ is-land--eleventy-editor {
 	cursor: pointer;
 }
 /* Only constrain height with JS (we’re enhancing from <pre>) */
+is-land:not(:defined) eleventy-editor pre,
 is-land--eleventy-editor pre {
 	max-height: 45vh;
 	overflow: hidden;

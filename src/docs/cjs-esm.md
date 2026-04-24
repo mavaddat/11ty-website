@@ -185,7 +185,9 @@ Note the `async` configuration callback.
 
 #### Using ESM plugins in CommonJS Configuration
 
-You can use any third-party plugin written in ESM using the same approach. Keep in mind that using default export as the plugin callback, you will need to use the special `default` property supplied from dynamic `import()`.
+_Remember, you can use `require` to import an ESM plugin in Node 20.19 and newer (and ignore this section)._
+
+But if you’re on an older version of Node, you can use ESM plugins in a CommonJS configuration file with dynamic import. Keep in mind that using default export as the plugin callback, you will need to use the special `default` property supplied from dynamic `import()`.
 
 {%- set codeBlock %}{% raw %}
 module.exports = async function (eleventyConfig) {
@@ -208,20 +210,12 @@ You can write your [Eleventy plugins](/docs/plugins.md) in CommonJS or ESM too. 
   </thead>
   <tbody>
     <tr>
-      <td>Compatibility with Eleventy v3 and newer</td>
-      <td>✅ ESM</td>
+      <td>Okay with Eleventy 3+ and Node 20.19+ compatibility?</td>
+      <td>Use ESM</td>
     </tr>
     <tr>
-      <td>Compatibility with Eleventy v2 or older</td>
-      <td>✅ CommonJS</td>
-    </tr>
-    <tr>
-      <td>Compatibility with Node 20.19+</td>
-      <td>✅ ESM</td>
-    </tr>
-    <tr>
-      <td>Compatibility with older Node &lt; 20.19</td>
-      <td>✅ CommonJS</td>
+      <td>Need compatibility with older versions of Eleventy (<code>≤ 2</code>) or Node (<code>≤ 20.18</code>)?</td>
+      <td>Use CommonJS</td>
     </tr>
   </tbody>
 </table>

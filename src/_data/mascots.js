@@ -48,4 +48,11 @@ export default [
 		author: "David Neal",
 		description: "November 2023. Our third commission! We’re getting smarter.",
 	},
+	{
+		url: "/blog/awesome-possum/",
+		image: "/img/mascots/awesome-possum-balloon-smile-sm.svg",
+		name: "Awesome Possum",
+		author: "Font Awesome",
+		description: "March 2026. The possum has grown up! Now the mascot of the larger Awesomeverse.",
+	},
 ];

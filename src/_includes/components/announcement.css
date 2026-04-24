@@ -10,8 +10,6 @@
 	color: #fff;
 	font-weight: 600;
 	padding: 0.25em 1em;
-	text-align: center;
-	line-height: 1;
 	gap: .5em;
 }
 @media (min-width: 48em) {
@@ -21,6 +19,27 @@
 		font-size: clamp(1em, 2vw, 1.25em);
 	}
 }
+.announcement,
+.announcement-btn {
+	--btn-bg: #183153;
+	--btn-color: #f0f1f3;
+	--btn-shadow-color: #0f1f36;
+	display: flex;
+	justify-content: center;
+	font-weight: 600;
+}
+.announcement {
+	flex-wrap: wrap;
+}
+@media (prefers-color-scheme: dark) {
+	.announcement,
+	.announcement-btn {
+		--btn-bg: #00a776;
+		--btn-color: #f0f1f3;
+		--btn-shadow-color: #165b46;
+	}
+}
+.announcement-btn,
 .announcement > a,
 .announcement > span {
 	display: flex;
@@ -42,11 +61,34 @@
 	color: var(--btn-color);
 	box-shadow: 0 .375rem 0 var(--btn-shadow-color);
 }
+.announcement-btn,
+.announcement-btn:visited,
+.announcement-btn[href],
+.announcement > a,
+.announcement > a:visited,
+.announcement > a:any-link {
+	background-color: var(--btn-bg);
+	color: var(--btn-color);
+	box-shadow: 0 .375rem 0 var(--btn-shadow-color);
+}
+@media (max-width: 31.1875em) { /* 499px */
+	.announcement > a > span > b {
+		display: none;
+	}
+}
+.announcement-btn:hover,
 .announcement a:hover {
 	text-decoration: underline;
 }
 .announcement a:after {
 	display: none;
+}
+.announcement-btn {
+	line-height: 1.6;
+	margin-block: 2em;
+	max-width: 28em;
+	margin-inline: auto;
+	text-align: center;
 }
 
 .elv-header-default .announcement {
@@ -55,3 +97,19 @@
 	--btn-shadow-color: #666;
 	background-color: #222;
 }
+
+.products .announcement svg {
+	min-width: 1em;
+}
+/* External link opt-out */
+.announcement-btn:after {
+	display: none;
+}
+.announcement-btn svg {
+	min-width: 1.5em;
+	height: auto;
+}
+.elv-footer-wrap .announcement {
+	background-color: color-mix(in oklab, var(--background-color), var(--btn-bg) 85%);
+}
+

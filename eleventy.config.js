@@ -387,7 +387,7 @@ export default async function (eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy({
 		[resolveModule("@11ty/logo/assets/logo-bg.svg")]: "img/logo-github.svg",
-		[resolveModule("@11ty/logo/assets/open-graph.jpg")]: "img/open-graph.jpg",
+		// [resolveModule("@11ty/logo/assets/open-graph.jpg")]: "img/open-graph.jpg",
 		[resolveModule("@11ty/logo/img/logo-784x1093.png")]: "img/logo.png",
 		[resolveModule("@11ty/logo/img/logo-200x200.png")]: "img/logo-github.png",
 		[resolveModule("@11ty/logo/img/logo-96x96.png")]: "img/favicon.png",
@@ -407,8 +407,7 @@ export default async function (eleventyConfig) {
 	await minifyJavaScriptFile(resolveModule("@11ty/client"), path.join(eleventyConfig.directories.output, "js/eleventy.core.browser.js"));
 	await minifyJavaScriptFile(resolveModule("@11ty/client/md"), path.join(eleventyConfig.directories.output, "js/eleventy.engine-md.browser.js"));
 	await minifyJavaScriptFile(resolveModule("@11ty/client/liquid"), path.join(eleventyConfig.directories.output, "js/eleventy.engine-liquid.browser.js"));
-	await bundleModulePath("@awesome.me/webawesome/dist/components/copy-button/copy-button.js", path.join(eleventyConfig.directories.output, "js/copy-button.js"));
-	await bundle(["./config/webAwesomeBundle.js"], path.join(eleventyConfig.directories.output, "js/web-awesome.js"));
+	await bundleModulePath("@awesome.me/webawesome/dist/components/copy-button/copy-button.js", path.join(eleventyConfig.directories.output, "js/wa-copy-button.js"));
 
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("src/blog/*.png");
@@ -940,6 +939,25 @@ to:
 		return version;
 	})
 
+		// Remove after https://github.com/11ty/eleventy/issues/3668
+	const TIME_ZONE = "America/Chicago";
+	eleventyConfig.addDateParsing(function(dateValue) {
+		let localDate;
+		if(dateValue instanceof Date) { // override YAML dates
+			localDate = DateTime.fromJSDate(dateValue, { zone: "utc" }).setZone(TIME_ZONE, { keepLocalTime: true });
+		} else if(typeof dateValue === "string") { // override String dates
+			localDate = DateTime.fromISO(dateValue, { zone: TIME_ZONE });
+		} else {
+			let filepathRegex = this.page.inputPath.match(/(\d{4}-\d{2}-\d{2})/);
+			if (filepathRegex !== null) {
+				localDate = DateTime.fromISO(filepathRegex[1], { zone: TIME_ZONE });
+			}
+		}
+
+		if (localDate?.isValid) {
+			return localDate;
+		}
+	});
 };
 
 export const config = {

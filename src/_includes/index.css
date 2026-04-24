@@ -1,5 +1,10 @@
 :root {
 	--layout-max: 70rem;
+	--paragraph-max: 44rem;
+	--brand-ba: rgb(0, 167, 118); /* 00a676 */
+	--brand-fa: rgb(84, 140, 216); /* 548cd8 */
+	--brand-wa: rgb(243, 105, 69); /* f36945 */
+	--brand-navy: #183153;
 
 	--color_dark: #fff; /* reused in header */
 
@@ -85,7 +90,7 @@ hr {
 	border-top: 1px solid var(--border-color);
 }
 p {
-	max-width: 42em;
+	max-width: var(--paragraph-max);
 	line-height: 1.6;
 }
 
@@ -314,10 +319,11 @@ footer.elv-layout {
 /* #2col */
 @media (min-width: 41.4375em) {
 	.elv-layout-toc {
+		--toc-sidebar-size: 12.5rem;
 		display: grid;
 		gap: 2rem;
-		grid-template-columns: 12.5rem minmax(1px, 1fr);
-		padding: 0 1rem 2rem 1rem;
+		grid-template-columns: var(--toc-sidebar-size) minmax(1px, 1fr);
+		padding: 1rem 1rem 2rem 1rem;
 	}
 }
 
@@ -461,6 +467,21 @@ filter-container:defined form {
 .ta-r {
 	text-align: right;
 }
+.util-flex {
+	display: flex;
+	gap: 1em;
+}
+.util-flex:is(ul, ol) {
+	list-style: "";
+	margin: 0;
+	padding: 0;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.util-flex:is(ul, ol) li {
+	flex-grow: 1;
+	padding: 0;
+}
 .util-stack {
 	display: grid;
 }
@@ -505,4 +526,48 @@ filter-container:defined form {
 	width: 2.2em;
 	height: 2.2em;
 	color: #c70000;
+}
+
+/* Blog layout */
+.elv-layout-blog heading-anchors > *:not(h1, .breadcrumb, .fl-inline, .elv-blog-navigation, hr, .sites-vert, table) {
+	max-width: var(--paragraph-max);
+}
+/* Blog previous/next */
+.elv-blog-navigation:is(ul, ol) li {
+	display: flex;
+	gap: .25em;
+	flex-direction: column;
+}
+.elv-blog-navigation:is(ul, ol) a[href] {
+	display: block;
+	max-width: 20em;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child {
+	align-items: flex-end;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child a[href] {
+	text-align: right;
+}
+.elv-blog-navigation span:first-child {
+	font-size: .75em;
+	text-transform: uppercase;
+	letter-spacing: .15em;
+}
+.elv-blog-navigation svg {
+	font-size: .75em;
+	vertical-align: unset;
+	margin-inline: 0 .5em;
+}
+.elv-blog-navigation:is(ul, ol) li:last-child svg {
+	margin-inline: .5em 0;
+}
+
+code.elv-tag {
+	display: inline-flex;
+	align-items: center;
+	font-size: .75em;
+	white-space: nowrap;
+	margin-inline: .25em;
+	padding: .15em .5em .15em .35em;
+	border-radius: .5em;
 }

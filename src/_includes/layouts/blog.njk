@@ -4,6 +4,8 @@ layout: layouts/docs.njk
 eleventyComputed:
   social:
     description: "An Eleventy blog post published on {{ page.date | newsDate('LLLL yyyy') }}."
+classAdditions:
+  main: elv-layout-blog
 ---
 <h1>{{ newstitle }}</h1>
 
@@ -26,15 +28,15 @@ eleventyComputed:
 {% if not hideRelatedBlogPosts %}
 <hr>
 
-<h3>Read more <a href="/blog/">blog posts</a>:</h3>
+<h3>More <a href="/blog/">Blog Posts</a></h3>
 
 {%- set previousPost = collections.blog | getPreviousCollectionItem(page) %}
 {%- set nextPost = collections.blog | getNextCollectionItem(page) %}
 
 {%- if nextPost or previousPost %}
-<ul>
-{% if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.newstitle }}</a></li>{% endif %}
-{% if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.newstitle }}</a></li>{% endif %}
+<ul class="elv-blog-navigation util-flex">
+<li><span><i class="fa-solid fa-arrow-left"></i>Older</span>{% if previousPost %}<a href="{{ previousPost.url }}"><strong>{{ previousPost.data.newstitle }}</strong></a>{% else %}<em>None</em>{% endif %}</li>
+<li><span>Newer<i class="fa-solid fa-arrow-right"></i></span>{% if nextPost %}<a href="{{ nextPost.url }}"><strong>{{ nextPost.data.newstitle }}</strong></a>{% else %}<em>None (yet!)</em></em>{% endif %}</li>
 </ul>
 {%- endif %}
 

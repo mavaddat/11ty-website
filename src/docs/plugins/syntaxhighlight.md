@@ -138,9 +138,9 @@ Will render like this in the browser:
 
 {% highlight "diff-js" %}
 +function myFunction() {
-   // …
--  return true;
- }
+	// …
+-	return true;
+}
 {% endhighlight %}
 
 {% endcallout %}
