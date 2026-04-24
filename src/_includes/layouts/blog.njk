@@ -34,7 +34,7 @@ classAdditions:
 {%- set nextPost = collections.blog | getNextCollectionItem(page) %}
 
 {%- if nextPost or previousPost %}
-<ul class="elv-blog-navigation util-flex">
+<ul class="elv-blog-navigation">
 <li><span><i class="fa-solid fa-arrow-left"></i>Older</span>{% if previousPost %}<a href="{{ previousPost.url }}"><strong>{{ previousPost.data.newstitle }}</strong></a>{% else %}<em>None</em>{% endif %}</li>
 <li><span>Newer<i class="fa-solid fa-arrow-right"></i></span>{% if nextPost %}<a href="{{ nextPost.url }}"><strong>{{ nextPost.data.newstitle }}</strong></a>{% else %}<em>None (yet!)</em></em>{% endif %}</li>
 </ul>
