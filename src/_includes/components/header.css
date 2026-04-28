@@ -114,12 +114,6 @@
 		--search-text: #fff;
 	}
 }
-.elv-header-default .elv-nav-menu {
-	--search-bg: rgba(0, 0, 0, 0.8);
-	--search-icon: rgba(255, 255, 255, 0.4);
-	--search-border: rgba(255, 255, 255, 0.2);
-	--search-text: #fff;
-}
 
 .elv-nav-menu form {
 	color: var(--search-text);
@@ -286,28 +280,6 @@ main h1.elv-hed {
 }
 
 /* Comparison component */
-.elv-nav-header
-	wa-comparison:not(:defined)
-	:where([slot="before"], [slot="handle"]) {
-	display: none;
-}
-.elv-nav-header wa-comparison,
-.elv-nav-header wa-comparison .elv-hero {
-	min-height: 11rem;
-}
-.elv-nav-header wa-comparison {
-	--wa-color-surface-default: #111;
-	--wa-color-neutral-on-quiet: #fff;
-	--wa-border-radius-circle: 2.5em;
-	--wa-focus-ring: solid 0.1875rem #00a877;
-	--wa-focus-ring-offset: 0.0625em;
-	height: 40vh;
-}
-.elv-nav-header wa-comparison .fa11ty-icon[slot="handle"] {
-	width: 1em;
-	height: 1em;
-	margin: 0;
-}
 
 .elv-mascot-image {
 	position: absolute;
@@ -318,6 +290,9 @@ main h1.elv-hed {
 	filter: drop-shadow(3px 3px #0006);
 }
 
+wa-dialog.promo-dialog:not(:defined) {
+	display: none;
+}
 .promo-dialog {
 	--width: 40em;
 	--spacing: 0;
