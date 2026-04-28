@@ -1,7 +1,6 @@
-
 /* Header */
 .elv-menu {
-	background-color: rgba(255, 255, 255, .65);
+	background-color: rgba(255, 255, 255, 0.65);
 	color: var(--color);
 	backdrop-filter: blur(15px);
 }
@@ -16,7 +15,7 @@
 }
 @media (prefers-color-scheme: dark) {
 	.elv-menu {
-		background-color: rgba(0,0,0,.65);
+		background-color: rgba(0, 0, 0, 0.65);
 	}
 }
 .elv-header {
@@ -59,8 +58,8 @@
 	max-height: 2em;
 	background-color: #222;
 	text-align: center;
-	border-radius: .15em;
-	padding: 0 .25em;
+	border-radius: 0.15em;
+	padding: 0 0.25em;
 }
 .elv-nav-menu-logo svg {
 	width: 100%;
@@ -77,7 +76,8 @@
 .elv-nav-menu {
 	padding-right: 1rem;
 }
-@media (min-width: 34.4375em) and (max-width: 74.9375em) { /* 551px–1199px */
+@media (min-width: 34.4375em) and (max-width: 74.9375em) {
+	/* 551px–1199px */
 	.elv-header-docs .elv-nav-menu {
 		padding-right: 4em;
 	}
@@ -100,17 +100,17 @@
 }
 
 .elv-nav-menu {
-	--search-bg: rgba(255,255,255,.8);
-	--search-icon: rgba(0,0,0,.4);
-	--search-border: rgba(0,0,0,.2);
+	--search-bg: rgba(255, 255, 255, 0.8);
+	--search-icon: rgba(0, 0, 0, 0.4);
+	--search-border: rgba(0, 0, 0, 0.2);
 	--search-text: #000;
 	--search-radius: 1rem;
 }
 @media (prefers-color-scheme: dark) {
 	.elv-nav-menu {
-		--search-bg: rgba(0,0,0,.8);
-		--search-icon: rgba(255,255,255,.4);
-		--search-border: rgba(255,255,255,.2);
+		--search-bg: rgba(0, 0, 0, 0.8);
+		--search-icon: rgba(255, 255, 255, 0.4);
+		--search-border: rgba(255, 255, 255, 0.2);
 		--search-text: #fff;
 	}
 }
@@ -118,7 +118,8 @@
 .elv-nav-menu form {
 	color: var(--search-text);
 }
-@media (min-width: 67.5em) { /* 1080px */
+@media (min-width: 67.5em) {
+	/* 1080px */
 	.elv-nav-menu form {
 		margin-inline: 2em;
 	}
@@ -135,9 +136,9 @@
 	background-color: var(--search-bg);
 }
 .elv-nav-menu button {
-	font-size: .75em;
+	font-size: 0.75em;
 	margin: 0;
-	padding-inline: .75em;
+	padding-inline: 0.75em;
 	border-radius: var(--search-radius);
 	border: none;
 	color: var(--search-icon);
@@ -164,6 +165,15 @@
 	height: 40vh;
 	background-color: #222;
 	text-decoration: none;
+}
+.elv-hero:has(.elv-hero-ba) {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		var(--stripe-color-1),
+		var(--stripe-color-1) 10px,
+		var(--stripe-color-2) 10px,
+		var(--stripe-color-2) 20px
+	);
 	background-color: #00A776;
 }
 .elv-hero-ba {
@@ -175,7 +185,7 @@
 	width: clamp(4em, 10vh, 10em);
 	height: auto;
 	aspect-ratio: 1/1;
-	margin: .5em auto;
+	margin: 0.5em auto;
 	color: #183153;
 }
 .elv-hero-ba svg + svg {
@@ -267,4 +277,88 @@ main h1.elv-hed {
 .elv-header-default .elv-nav-header {
 	position: relative;
 	z-index: 0;
+}
+
+/* Comparison component */
+
+.elv-mascot-image {
+	position: absolute;
+	bottom: 0;
+	right: 15%;
+	width: 100px;
+	height: auto;
+	filter: drop-shadow(3px 3px #0006);
+}
+
+wa-dialog.promo-dialog:not(:defined) {
+	display: none;
+}
+.promo-dialog {
+	--width: 40em;
+	--spacing: 0;
+}
+.promo-dialog wa-button::part(base) {
+	background: #00a877;
+	color: #fff;
+	font-weight: 700;
+}
+.promo-dialog p {
+	color: black;
+	padding: 1em;
+}
+.promo-dialog-content {
+	color: #191b22;
+	padding: 1em;
+	line-height: 1.5;
+}
+.promo-footer {
+	padding: 1em;
+	width: 100%;
+	text-align: center;
+}
+#promo-dialog wa-button[appearance="plain"]::part(base) {
+	background-color: white;
+	color: #000;
+	padding-right: 3em;
+}
+.promo-dialog-ks-button {
+	width: 25em;
+}
+
+@media (prefers-color-scheme: dark) {
+	.promo-dialog::part(panel) {
+		background-color: #191b22;
+		color: #f1f2f3;
+	}
+	.promo-dialog {
+		--width: 40em;
+		--spacing: 0;
+		color: #f1f2f3;
+		background: #191b22;
+	}
+	.promo-dialog body, .promo-dialog wa-stack {
+		color: #f1f2f3;
+		background: #191b22;
+	}
+	.promo-dialog wa-button::part(base) {
+		background: #00a877;
+		color: #f1f2f3;
+		font-weight: 700;
+	}
+	.promo-dialog-content {
+		color: #f1f2f3;
+		background: #191b22;
+		padding: 1em;
+		line-height: 1.5;
+	}
+	.promo-footer {
+		padding: 1em;
+		background: #191b22;
+		width: 100%;
+	}
+	#promo-dialog wa-button[appearance="plain"]::part(base) {
+		background-color: #191b22;
+		color: #f1f2f3;
+		padding-right: 3em;
+	}
 }

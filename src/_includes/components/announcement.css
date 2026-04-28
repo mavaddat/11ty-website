@@ -1,5 +1,14 @@
 .announcement {
+	--btn-bg: #f0f1f3;
+	--btn-color: #183153;
+	--btn-shadow-color: #0f1f36;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	width: 100%;
+	background-color: rgb(24, 49, 83);
+	color: #fff;
+	font-weight: 600;
 	padding: 0.25em 1em;
 	gap: .5em;
 }
@@ -38,9 +47,19 @@
 	gap: .5em;
 	padding: .5em 2em;
 	text-decoration: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	border-radius: .5em;
 	margin: .25em .25em .5em .25em;
 	border: .125rem solid var(--btn-shadow-color);
+}
+.announcement > a,
+.announcement > a:visited,
+.announcement > a:any-link {
+	background-color: var(--btn-bg);
+	color: var(--btn-color);
+	box-shadow: 0 .375rem 0 var(--btn-shadow-color);
 }
 .announcement-btn,
 .announcement-btn:visited,
