@@ -180,6 +180,7 @@ h5,
 .benchnine {
 	font-family: BenchNine, system-ui, sans-serif;
 	font-weight: 700;
+	text-wrap: pretty;
 }
 h1 {
 	margin: 0 0 .5em;
