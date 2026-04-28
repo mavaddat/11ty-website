@@ -112,4 +112,10 @@
 .elv-footer-wrap .announcement {
 	background-color: color-mix(in oklab, var(--background-color), var(--btn-bg) 85%);
 }
-
+.announcement time-difference {
+	font-size: .75em;
+	text-transform: uppercase;
+	padding: .25em .75em;
+	border-radius: .25em;
+	background-color: rgba(0,0,0,.4);
+}
