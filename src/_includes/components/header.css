@@ -312,17 +312,19 @@ wa-dialog.promo-dialog:not(:defined) {
 	line-height: 1.5;
 }
 .promo-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
 	padding: 1em;
-	width: 100%;
-	text-align: center;
+	justify-content: center;
 }
 #promo-dialog wa-button[appearance="plain"]::part(base) {
 	background-color: white;
 	color: #000;
-	padding-right: 3em;
 }
 .promo-dialog-ks-button {
-	width: 25em;
+	flex-grow: 1;
+	max-width: 25em;
 }
 
 @media (prefers-color-scheme: dark) {
