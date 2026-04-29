@@ -297,6 +297,10 @@ wa-dialog.promo-dialog:not(:defined) {
 	--width: 40em;
 	--spacing: 0;
 }
+.promo-dialog img {
+	max-width: 100%;
+	height: auto;
+}
 .promo-dialog wa-button::part(base) {
 	background: #00a877;
 	color: #fff;
