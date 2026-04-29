@@ -43,6 +43,8 @@
 .announcement > span {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 	gap: .5em;
 	padding: .5em 2em;
 	text-decoration: none;
