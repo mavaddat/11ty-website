@@ -302,9 +302,11 @@ wa-dialog.promo-dialog:not(:defined) {
 	height: auto;
 }
 .promo-dialog wa-button::part(base) {
-	background: #00a877;
-	color: #fff;
 	font-weight: 700;
+}
+.promo-dialog wa-button[variant="brand"]::part(base) {
+	background: var(--brand-ba);
+	color: #fff;
 }
 .promo-dialog p {
 	color: black;
@@ -318,13 +320,9 @@ wa-dialog.promo-dialog:not(:defined) {
 .promo-footer {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 2em;
+	gap: .5em 2em;
 	padding: 1em;
 	justify-content: center;
-}
-#promo-dialog wa-button[appearance="plain"]::part(base) {
-	background-color: white;
-	color: #000;
 }
 .promo-dialog-ks-button {
 	flex-grow: 1;
